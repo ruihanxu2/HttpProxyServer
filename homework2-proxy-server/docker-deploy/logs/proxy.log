@@ -1,0 +1,33 @@
+0: CONNECT aus5.mozilla.org:443 HTTP/1.1 from 10.198.128.163 @ Wed Feb 27 22:13:31 2019
+0: NOTE setting up turnel
+1: POST http://ocsp.digicert.com/ HTTP/1.1 from 10.198.128.163 @ Wed Feb 27 22:13:31 2019
+2: GET http://detectportal.firefox.com/success.txt HTTP/1.1 from 10.197.144.137 @ Wed Feb 27 22:13:34 2019
+2: Requesting "GET http://detectportal.firefox.com/success.txt HTTP/1.1" from detectportal.firefox.com
+3: CONNECT www.google.com:443 HTTP/1.1 from 10.198.128.163 @ Wed Feb 27 22:13:37 2019
+3: NOTE setting up turnel
+4: CONNECT ssl.gstatic.com:443 HTTP/1.1 from 10.198.128.163 @ Wed Feb 27 22:13:37 2019
+4: NOTE setting up turnel
+5: CONNECT id.google.com:443 HTTP/1.1 from 10.198.128.163 @ Wed Feb 27 22:13:38 2019
+5: NOTE setting up turnel
+6: POST http://ocsp.pki.goog/GTSGIAG3 HTTP/1.1 from 10.198.128.163 @ Wed Feb 27 22:13:38 2019
+7: CONNECT www.gstatic.com:443 HTTP/1.1 from 10.198.128.163 @ Wed Feb 27 22:13:38 2019
+7: NOTE setting up turnel
+8: CONNECT encrypted-tbn0.gstatic.com:443 HTTP/1.1 from 10.198.128.163 @ Wed Feb 27 22:13:38 2019
+8: NOTE setting up turnel
+9: POST http://ocsp.pki.goog/GTSGIAG3 HTTP/1.1 from 10.198.128.163 @ Wed Feb 27 22:13:38 2019
+10: CONNECT apis.google.com:443 HTTP/1.1 from 10.198.128.163 @ Wed Feb 27 22:13:38 2019
+10: NOTE setting up turnel
+11: GET http://example.com/ HTTP/1.1 from 10.198.128.163 @ Wed Feb 27 22:13:39 2019
+11: Requesting "GET http://example.com/ HTTP/1.1" from example.com
+11: Received "HTTP/1.1 200 OK" from example.com
+11: Responding "HTTP/1.1 200 OK"
+12: GET http://detectportal.firefox.com/success.txt HTTP/1.1 from 10.197.144.137 @ Wed Feb 27 22:13:39 2019
+12: Requesting "GET http://detectportal.firefox.com/success.txt HTTP/1.1" from detectportal.firefox.com
+13: CONNECT adservice.google.com:443 HTTP/1.1 from 10.198.128.163 @ Wed Feb 27 22:13:40 2019
+13: NOTE setting up turnel
+14: POST http://ocsp.pki.goog/GTSGIAG3 HTTP/1.1 from 10.198.128.163 @ Wed Feb 27 22:13:40 2019
+15: CONNECT googleads.g.doubleclick.net:443 HTTP/1.1 from 10.198.128.163 @ Wed Feb 27 22:13:42 2019
+15: NOTE setting up turnel
+16: POST http://ocsp.pki.goog/GTSGIAG3 HTTP/1.1 from 10.198.128.163 @ Wed Feb 27 22:13:42 2019
+17: GET http://detectportal.firefox.com/success.txt HTTP/1.1 from 10.197.144.137 @ Wed Feb 27 22:13:44 2019
+17: Requesting "GET http://detectportal.firefox.com/success.txt HTTP/1.1" from detectportal.firefox.com

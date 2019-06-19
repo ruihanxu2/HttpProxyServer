@@ -1,0 +1,57 @@
+Assignment 2: HTTP proxy danger log
+
+1. Working principle:
+  The proxy is acting as a gateway between the server and the client. It can do
+  much more than just forwarding the message. For example, the proxy can be used
+  as a firewall to filter the malicious websites. It can also hide the ip of the
+  user to improve security. The proxy we implemented, is a simplified version
+  supporting GET, CONNECT and POST. For GET, it also has a cache in order to
+  reduce the number of accesses to the server. The implementation details of
+  cache is written in part 3. GET and POST is relatively easy. The proxy simply
+  receive from server/client and send it to the other. For CONNECT, the proxy
+  actually opens a tunnel between the server and client. The proxy uses Select()
+  to check the server socket and client socket. If one of them is ready to read,
+  the proxy will recv the data and forward it to another socket. The CONNECT can
+  be used to deal with
+
+
+2. Buffer design:
+  Since the buffer used in recv() and send() requires a fix amount of size and
+  we cannot always get the actual size of the request/respond in advance. A
+  small size might have problems yet a very large size may be wasteful. We used
+  a vector<char> as the buffer. We will try to receive 1024 bytes every time.
+  The return value of the recv() will indicate whether we have get all the data.
+  If recv() returns 1024, it is likely that the data is not fully transferred.
+  In such case, We will use the resize() function to enlarge the buffer vector
+  and wait for another transmit. If recv() returns a value that is smaller than
+  1024, then the
+
+
+3. Cache:
+  To implement a cache, we decided to use an unordered_map with random evict
+  method to reduce the complexity of the code. The key is a request string. The
+  value is a struct that have information containing respond, arrival_time,
+  max-age and public. Every time the proxy receives a GET, it will first check 
+  the cache to see if it has the desired response. If it has and the cached
+  respond is not expired, the proxy will return that respond directly without
+  connecting to the server. Else, the proxy will perform a get and after getting
+  the respond, it will save it to the cache and overwrite the old one if exist.
+  Please not that using a doubly linked list with an unordered_map can perform a
+  LRU evict algorithm that can perform better than the random algorithm.
+
+
+
+4. External failures and exception:
+  Unexpected failures may happen when we are trying to browse web pages through
+  our proxy. First, the send() and recv() functions may encounter problems
+  and returns a negative value. In such cases, our proxy will write an error
+  message to the log file and terminate that particular thread. Second, the
+  connection to the server may not be established. Similarly, we will write to
+  log of this error message and stop the thread. Third, in the GET method,
+  sometimes the server will not send all the data at once. For example, when we
+  try to access http://people.duke.edu/~bmr23/ece568/class.html, the page is
+  partially loaded. To deal with this, we added a MSG_WAITALL flag to the recv()
+  function. This flag also helpes with chunked data. This ensures that the
+  recv() will wait until all the data is sent.The exception guarantee is no
+  throw and strong most of the time, since we did not use complicated class and
+  try to use the stl built-ins. E.g. vector, map, unordered_map.
